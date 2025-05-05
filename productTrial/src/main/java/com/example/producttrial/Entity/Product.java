@@ -14,7 +14,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String code;
     private String name;
@@ -38,6 +38,11 @@ public class Product {
         INSTOCK,
         LOWSTOCK,
         OUTOFSTOCK
+    }
+
+    public Product(String name, Double price) {
+        this.name = name;
+        this.price = price;
     }
 }
 

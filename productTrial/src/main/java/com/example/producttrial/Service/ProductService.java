@@ -22,11 +22,15 @@ public class ProductService {
         return repo.save(product);
     }
 
-    public void delete(Long id) {
+    public List<Product> getAllProducts() {
+        return repo.findAll();
+    }
+
+    public void delete(Integer id) {
         repo.deleteById(id);
     }
 
-    public Product getById(Long id) {
+    public Product getById(Integer id) {
         return repo.findById(id).orElse(null);
     }
 }

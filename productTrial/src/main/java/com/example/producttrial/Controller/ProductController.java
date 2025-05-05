@@ -28,12 +28,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getOne(@PathVariable Long id) {
+    public Product getOne(@PathVariable Integer id) {
         return service.getById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 }
