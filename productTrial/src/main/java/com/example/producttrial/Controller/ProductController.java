@@ -1,14 +1,15 @@
 package com.example.producttrial.Controller;
 
-
 import com.example.producttrial.Entity.Product;
 import com.example.producttrial.Service.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     private final ProductService service;
@@ -23,6 +24,7 @@ public class ProductController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Product create(@RequestBody Product product) {
         return service.save(product);
     }
@@ -33,6 +35,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
